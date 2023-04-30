@@ -16,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/employees")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EmployeeController {
 
 	private final EmployeeRepository employeeRepository;
