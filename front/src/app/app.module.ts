@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 @NgModule({
@@ -13,10 +14,14 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
+    
     AppRoutingModule,
     HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
