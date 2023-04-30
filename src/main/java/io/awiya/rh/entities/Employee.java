@@ -1,9 +1,6 @@
 package io.awiya.rh.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,6 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Employee {
 
     @Id
@@ -30,7 +28,7 @@ public class Employee {
     @NotEmpty(message = "Oops! Looks like you forgot to enter your last name. Please fill in this field to continue.")
     private String lastName;
 
-	@Column(length = 20)
+	@Column(length = 50)
     @Email(message = "Uh-oh! It seems like the email you entered isn't quite right. " +
             "Please make sure you've entered a valid email address, like 'example@email.com'. " +
             "Don't worry, we won't share your email with anyone." )
