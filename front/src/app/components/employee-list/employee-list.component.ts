@@ -16,7 +16,7 @@ export class EmployeeListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+    this.handlegetEmployeeList();
   }
 
   handlegetEmployeeList(){
