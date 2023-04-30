@@ -4,7 +4,6 @@ import io.awiya.rh.entities.Employee;
 import io.awiya.rh.exceptions.ResourceNotFoundException;
 import io.awiya.rh.repositories.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,13 +39,13 @@ public class EmployeeController {
 
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
+	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee givenEmployee){
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Sorry, we could not find an employee with the specified ID. [id:] " + id));
 		
-		employee.setFirstName(employeeDetails.getFirstName());
-		employee.setLastName(employeeDetails.getLastName());
-		employee.setEmail(employeeDetails.getEmail());
+		employee.setFirstName(givenEmployee.getFirstName());
+		employee.setLastName(givenEmployee.getLastName());
+		employee.setEmail(givenEmployee.getEmail());
 		
 		Employee updatedEmployee = employeeRepository.save(employee);
 		return ResponseEntity.ok(updatedEmployee);
