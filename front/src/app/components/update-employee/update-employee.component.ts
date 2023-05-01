@@ -10,31 +10,29 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class UpdateEmployeeComponent implements OnInit{
 
-  employee: Employee = new Employee();
   id: number;
-
-  constructor(private service: EmployeeService, private router: Router,private route: ActivatedRoute){}
+  employee: Employee = new Employee();
+  constructor(private employeeService: EmployeeService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+
+    this.employeeService.getEmployeeById(this.id).subscribe(data => {
+      this.employee = data;
+    }, error => console.log(error));
   }
 
   onSubmit(){
-    this.service.createEmployee(this.employee).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.goToEmployeeList();
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
-
+    this.employeeService.updateEmployee(this.id, this.employee).subscribe( data =>{
+      this.goToEmployeeList();
+    }
+    , error => console.log(error));
   }
 
-  
   goToEmployeeList(){
-    this.router.navigate(['/employees'])
+    this.router.navigate(['/employees']);
   }
 
 }
