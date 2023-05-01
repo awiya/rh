@@ -6,17 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    CreateEmployeeComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
