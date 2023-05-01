@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
-  selector: 'app-create-employee',
-  templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']
+  selector: 'app-update-employee',
+  templateUrl: './update-employee.component.html',
+  styleUrls: ['./update-employee.component.css']
 })
-export class CreateEmployeeComponent implements OnInit{
+export class UpdateEmployeeComponent implements OnInit{
 
   employee: Employee = new Employee();
+  id: number;
 
-  constructor(private service: EmployeeService, private router: Router){}
+  constructor(private service: EmployeeService, private router: Router,private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    
+    this.id = this.route.snapshot.params['id'];
   }
 
   onSubmit(){
